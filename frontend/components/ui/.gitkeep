@@ -1,0 +1,3 @@
+# Placeholder - shadcn/ui components
+# Run: npx shadcn-ui@latest init
+# Then: npx shadcn-ui@latest add button card input ...
