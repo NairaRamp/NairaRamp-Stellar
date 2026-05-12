@@ -1,0 +1,88 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  *, *::before, *::after {
+    box-sizing: border-box;
+  }
+
+  html {
+    scroll-behavior: smooth;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  body {
+    background-color: #FFFFFF;
+    color: #0A0A0A;
+    font-family: 'Inter', system-ui, sans-serif;
+    font-feature-settings: 'cv02', 'cv03', 'cv04', 'cv11';
+  }
+
+  h1, h2, h3, h4 {
+    font-weight: 900;
+    letter-spacing: -0.025em;
+    color: #0A0A0A;
+  }
+}
+
+@layer components {
+  /* ── Brutalist card ─────────────────────────── */
+  .card {
+    @apply bg-paper border-2 border-ink shadow-brut;
+  }
+
+  .card-green {
+    @apply bg-brand-muted border-2 border-ink shadow-brut;
+  }
+
+  /* ── Buttons ────────────────────────────────── */
+  .btn {
+    @apply inline-flex items-center justify-center gap-2
+           font-bold text-sm border-2 border-ink
+           px-5 py-3 cursor-pointer select-none
+           transition-all duration-100
+           active:translate-x-[2px] active:translate-y-[2px];
+  }
+
+  .btn-primary {
+    @apply btn bg-brand text-paper shadow-brut
+           hover:bg-brand-dark active:shadow-none;
+  }
+
+  .btn-outline {
+    @apply btn bg-paper text-ink shadow-brut
+           hover:bg-off active:shadow-none;
+  }
+
+  .btn-ghost {
+    @apply btn border-transparent shadow-none hover:bg-faint;
+  }
+
+  /* ── Input ──────────────────────────────────── */
+  .input {
+    @apply w-full bg-paper border-2 border-ink px-4 py-3
+           text-sm font-medium text-ink placeholder:text-muted
+           focus:outline-none focus:ring-0 focus:border-brand
+           transition-colors duration-100;
+  }
+
+  /* ── Section label ──────────────────────────── */
+  .section-label {
+    @apply inline-block text-xs font-black uppercase tracking-[0.15em]
+           text-paper bg-brand px-3 py-1 border border-brand;
+  }
+
+  /* ── Divider ────────────────────────────────── */
+  .divider {
+    @apply border-t-2 border-ink;
+  }
+}
+
+@layer utilities {
+  .text-balance {
+    text-wrap: balance;
+  }
+}
