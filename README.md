@@ -2,7 +2,7 @@
 
 **Convert USDC and USDT to Nigerian Naira — instantly, on Stellar.**
 
-[Live Site](https://nairaramp.vercel.app) · [Demo Video](https://loom.com/share/nairaramp-demo) · [Docs](./docs/README.md)
+[Live Site](https://naira-ramp-stellar.vercel.app/) · [Demo Video](https://www.loom.com/share/dfde4121be4348bbbb6ac53c68aa5063) · [Docs](./docs/README.md)
 
 ---
 
