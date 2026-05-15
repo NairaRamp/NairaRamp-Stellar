@@ -1,5 +1,5 @@
 import { NextRequest, NextResponse } from 'next/server';
-import { fetchLiveRate, applyFee } from '@/backend/lib/rates/exchange';
+import { createConversionQuote } from '@/backend/lib/conversion/quote';
 
 // GET /api/conversion/quote?amount=100&asset=USDC
 export async function GET(req: NextRequest) {
@@ -12,20 +12,11 @@ export async function GET(req: NextRequest) {
       return NextResponse.json({ error: 'Invalid amount' }, { status: 400 });
     }
 
-    const rate = await fetchLiveRate();
-    const ngnGross = amount * rate.usdToNgn;
-    const ngnNet = applyFee(ngnGross);
+    const quote = await createConversionQuote(amount, asset);
 
-    return NextResponse.json({
-      asset,
-      amount,
-      rate: rate.usdToNgn,
-      grossNGN: ngnGross,
-      netNGN: ngnNet,
-      fee: ngnGross - ngnNet,
-      updatedAt: rate.updatedAt,
-    });
-  } catch (err) {
-    return NextResponse.json({ error: 'Internal server error' }, { status: 500 });
+    return NextResponse.json({ success: true, data: quote });
+  } catch (err: unknown) {
+    const message = err instanceof Error ? err.message : 'Internal server error';
+    return NextResponse.json({ error: message }, { status: 500 });
   }
 }
